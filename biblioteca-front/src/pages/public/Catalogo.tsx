@@ -63,8 +63,19 @@ export default function Catalogo() {
             {libros.map((libro) => (
               <Link key={libro.id} to={`/libro/${libro.id}`}>
                 <Card className="h-full hover:shadow-lg transition">
-                  <div className="h-48 bg-gradient-to-br from-primary-400 to-primary-600 flex items-center justify-center">
-                    <span className="text-6xl text-white opacity-80">📖</span>
+                  <div className="h-48 bg-gradient-to-br from-primary-400 to-primary-600 flex items-center justify-center overflow-hidden">
+                    {libro.imagen_url ? (
+                      <img 
+                        src={libro.imagen_url} 
+                        alt={libro.titulo}
+                        className="w-full h-full object-cover"
+                        onError={(e) => {
+                          e.currentTarget.style.display = 'none';
+                          e.currentTarget.nextElementSibling?.classList.remove('hidden');
+                        }}
+                      />
+                    ) : null}
+                    <span className={`text-6xl text-white opacity-80 ${libro.imagen_url ? 'hidden' : ''}`}>📖</span>
                   </div>
                   <CardBody>
                     <h3 className="font-semibold text-lg mb-1 line-clamp-2">{libro.titulo}</h3>

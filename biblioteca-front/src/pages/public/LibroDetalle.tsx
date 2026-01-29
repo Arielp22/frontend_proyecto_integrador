@@ -98,8 +98,19 @@ export default function LibroDetalle() {
       <div className="grid md:grid-cols-3 gap-8">
         {/* Portada del Libro */}
         <div className="md:col-span-1">
-          <div className="bg-gradient-to-br from-primary-400 to-primary-600 rounded-lg aspect-[3/4] flex items-center justify-center shadow-lg">
-            <span className="text-9xl text-white opacity-80">📖</span>
+          <div className="bg-gradient-to-br from-primary-400 to-primary-600 rounded-lg aspect-[3/4] flex items-center justify-center shadow-lg overflow-hidden">
+            {libro.imagen_url ? (
+              <img 
+                src={libro.imagen_url} 
+                alt={libro.titulo}
+                className="w-full h-full object-cover"
+                onError={(e) => {
+                  e.currentTarget.style.display = 'none';
+                  e.currentTarget.nextElementSibling?.classList.remove('hidden');
+                }}
+              />
+            ) : null}
+            <span className={`text-9xl text-white opacity-80 ${libro.imagen_url ? 'hidden' : ''}`}>📖</span>
           </div>
         </div>
 

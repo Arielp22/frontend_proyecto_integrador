@@ -46,6 +46,7 @@ export interface Libro {
   idioma_id?: string;
   tipo_libro_id?: string;
   estado_id?: string;
+  imagen_url?: string;
 }
 
 export interface CreateLibroData {
@@ -59,6 +60,7 @@ export interface CreateLibroData {
   idioma_id?: string;
   tipo_libro_id?: string;
   estado_id?: string;
+  imagen_url?: string;
 }
 
 // Tipos de categoría

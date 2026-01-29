@@ -34,6 +34,7 @@ export default function LibrosAdmin() {
     numero_paginas: undefined,
     cantidad_disponible: 0,
     categoria_id: '',
+    imagen_url: '',
   });
 
   const fetchLibros = useCallback(async () => {
@@ -78,6 +79,7 @@ export default function LibrosAdmin() {
         numero_paginas: libro.numero_paginas,
         cantidad_disponible: libro.cantidad_disponible,
         categoria_id: libro.categoria_id || '',
+        imagen_url: libro.imagen_url || '',
       });
     } else {
       setSelectedLibro(null);
@@ -88,6 +90,7 @@ export default function LibrosAdmin() {
         numero_paginas: undefined,
         cantidad_disponible: 0,
         categoria_id: '',
+        imagen_url: '',
       });
     }
     setModalOpen(true);
@@ -238,6 +241,12 @@ export default function LibrosAdmin() {
             value={formData.autor || ''}
             onChange={(e) => setFormData({ ...formData, autor: e.target.value })}
             placeholder="Nombre del autor"
+          />
+          <Input
+            label="URL de la Imagen"
+            value={formData.imagen_url || ''}
+            onChange={(e) => setFormData({ ...formData, imagen_url: e.target.value })}
+            placeholder="https://ejemplo.com/imagen.jpg"
           />
           <div className="grid grid-cols-2 gap-4">
             <Input
